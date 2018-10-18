@@ -15,6 +15,7 @@
  */
 
 export {LauncherIconGenerator} from './launcher-icon-generator';
+export {LauncherIconGeneratorIos} from './launcher-icon-generator_ios';
 export {AppShortcutIconGenerator} from './app-shortcut-icon-generator';
 export {ActionBarIconGenerator} from './action-bar-icon-generator';
 export {NotificationIconGenerator} from './notification-icon-generator';

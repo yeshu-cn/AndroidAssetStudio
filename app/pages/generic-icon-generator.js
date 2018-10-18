@@ -59,6 +59,12 @@ export class GenericIconGenerator extends BaseGenerator {
           defaultValue: 8,
           textFn: d => `${d}dp`,
         }),
+        new studio.ColorField('backColor', {
+          title: 'Color',
+          helpText: 'Set background color',
+          alpha: true,
+          defaultValue: 'rgba(96, 125, 139, 0)'
+        }),
         new studio.ColorField('color', {
           title: 'Color',
           helpText: 'Set to transparent to retain original colors',
@@ -77,6 +83,7 @@ export class GenericIconGenerator extends BaseGenerator {
 
   regenerate() {
     let values = this.form.getValues();
+    values.backColor.setAlpha(1);
 
     this.zipper.clear();
     this.zipper.setZipFilename(`${values.name}.zip`);
@@ -92,6 +99,11 @@ export class GenericIconGenerator extends BaseGenerator {
 
       let outCtx = studio.Drawing.context(iconSize);
       let tmpCtx = studio.Drawing.context(iconSize);
+
+      values.backColor.setAlpha(1);
+      outCtx.fillStyle = values.backColor.toRgbString();
+      outCtx.fillRect(0,0,outCtx.canvas.width,outCtx.canvas.height);
+
 
       if (values.source.ctx) {
         let srcCtx = values.source.ctx;

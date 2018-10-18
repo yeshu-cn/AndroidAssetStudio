@@ -1,0 +1,14 @@
+---
+title: iOS launcher icon generator
+bodyClasses: page-launcher-icon-generator
+destination: /icons-launcher_ios.html
+---
+
+{% extends '_generator-base.html' %}
+
+{% block body %}
+{{ super() }}
+<script>
+new pages.LauncherIconGeneratorIos();
+</script>
+{% endblock %}
